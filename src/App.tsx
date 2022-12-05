@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import './App.css'
+import './App.less'
 import Button from '@mui/material/Button'
 import { LineChart } from './components/LineChart'
 import { Data } from './utils/Data'
