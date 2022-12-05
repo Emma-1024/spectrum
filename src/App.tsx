@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Button from "@mui/material/Button";
+import { LineChart } from "./components/LineChart";
+import { Data } from "./utils/Data";
+import { Chart, registerables } from 'chart.js';
+import * as ANameSpace from './components/aaa'
+
+
+Chart.register(...registerables);
 
 function App() {
+  const [chartProps] = useState({
+    data: {
+      labels: Data.map((data) => data.year),
+      datasets: [
+        {
+          label: "Users Gained ",
+          data: Data.map((data) => data.userGain),
+          backgroundColor: [
+            "rgba(75,192,192,1)",
+            "#ecf0f1",
+            "#50AF95",
+            "#f3ba2f",
+            "#2a71d0",
+          ],
+          borderColor: "black",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Users Gained between 2016-2020",
+        },
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button variant="contained">Contained</Button>
+      <LineChart chartProps={chartProps} />
     </div>
   );
 }
