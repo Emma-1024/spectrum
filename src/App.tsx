@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import { LineChart } from "./components/LineChart";
 import { Data } from "./utils/Data";
 import { Chart, registerables } from 'chart.js';
-import * as ANameSpace from './components/aaa'
 
 
 Chart.register(...registerables);
